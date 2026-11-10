@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Günün Mübarək, Muhamməd!</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            min-height: 100vh;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .glow-effect {
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.35);
+        }
+        /* Smooth Page Transition Effects */
+        .page-enter {
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+        }
+        .page-active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-exit {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.98);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        /* Custom Button Shake Effect on 'No' Click */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .shake-anim {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6 md:p-8 text-white relative overflow-x-hidden min-h-screen">
+
+    <!-- Ambient Animated Background Lights -->
+    <div class="fixed top-1/4 left-1/4 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-80 h-80 bg-pink-600/20 rounded-full blur-3xl pointer-events-none animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="fixed top-1/2 right-1/3 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none animate-pulse" style="animation-delay: 2s;"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-2xl relative z-10 my-auto">
+        
+        <!-- PAGE 1: Birthday Wish Message -->
+        <div id="page1" class="glass-card rounded-3xl p-6 sm:p-10 text-center glow-effect page-active">
+            <!-- Decorative Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-sm font-medium mb-6">
+                <span>✨</span>
+                <span>Özəl Təbrik</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-pink-200 to-white mb-6 leading-tight">
+                Ad Günün Mübarək, <br class="hidden sm:inline"/><span class="serif-font italic text-amber-300">Muhamməd!</span> 🎉
+            </h1>
+
+            <!-- Card Content Body -->
+            <div class="space-y-4 text-slate-200 text-base sm:text-lg leading-relaxed text-left bg-slate-900/40 p-6 sm:p-8 rounded-2xl border border-white/10 shadow-inner mb-8">
+                <p class="font-semibold text-purple-300 text-lg sm:text-xl">Salam, Muhamməd.</p>
+                <p>Necəsən? Axırki ad günün gəlib çatdı. Təbrik edirəm, daha yaxşı illərə çıxman arzusu ilə.</p>
+                <p>Sənin qədər yerində sözlər istifadə edə bilməsəm də, ən önəmlisi olaraq <span class="text-amber-300 font-medium underline underline-offset-4 decoration-amber-400/50">ruh sağlığı</span> olduğunu düşünürəm. Ondan sonra <span class="text-emerald-300 font-medium underline underline-offset-4 decoration-emerald-400/50">can sağlığı</span>, ən sonda <span class="text-sky-300 font-medium underline underline-offset-4 decoration-sky-400/50">həyat şəraiti</span>. Üçündən də zirvələrə çatmağını arzu edirəm.</p>
+                <p class="pt-2 italic text-purple-200/90 border-t border-white/10">Mən yaxşı dost ola bilməsəm də çox yaxşı dost olduğun üçün təşəkkür edirəm. ✨</p>
+            </div>
+
+            <!-- Action Button to Page 2 -->
+            <button onclick="goToPage2()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/40 active:translate-y-0">
+                <span>Davam et</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- PAGE 2: Invitation & Interactive Logic -->
+        <div id="page2" class="glass-card rounded-3xl p-6 sm:p-10 text-center glow-effect hidden page-enter">
+            <!-- Decorative Icon -->
+            <div class="w-16 h-16 bg-gradient-to-tr from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/30 text-2xl">
+                🎂
+            </div>
+
+            <!-- Main Invitation Header -->
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+                Ad Günü Dəvəti!
+            </h2>
+            
+            <p class="text-slate-300 text-base sm:text-lg mb-6">
+                Səni sabah saat <span class="text-amber-300 font-bold underline decoration-amber-400">11:00-da</span> keçiriləcək ad günü tədbirinə dəvət edirik! 🎈
+            </p>
+
+            <!-- Question Box -->
+            <div id="invitationCard" class="bg-slate-900/50 p-6 sm:p-8 rounded-2xl border border-white/10 mb-6 transition-all duration-300 relative min-h-[220px]">
+                <h3 class="text-xl sm:text-2xl font-bold text-purple-200 mb-2">
+                    Gələcəksən? (Will you come?)
+                </h3>
+                
+                <p id="hintText" class="text-sm text-pink-300/80 italic mb-6">
+                    (I recommend you to press no 3 times)
+                </p>
+
+                <!-- Interactive Buttons Container -->
+                <div id="buttonGroup" class="flex flex-col sm:flex-row items-center justify-center gap-4 min-h-[60px] relative">
+                    <button id="yesBtn" onclick="handleYes()" class="w-full sm:w-1/2 py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-emerald-900/30 z-10">
+                        Hə (Yes)
+                    </button>
+                    
+                    <button id="noBtn" onmouseenter="moveNoBtn()" onclick="handleNo()" class="w-full sm:w-1/2 py-3.5 px-6 bg-rose-600 hover:bg-rose-500 text-white font-bold text-lg rounded-xl transition-all duration-300 transform shadow-lg shadow-rose-900/30 z-20">
+                        Yox (No) <span id="clickCount" class="text-xs bg-black/30 px-2 py-0.5 rounded-full ml-1 hidden">0/3</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Final Revealed Message Container -->
+            <div id="finalMessage" class="hidden bg-gradient-to-r from-purple-900/80 to-indigo-900/80 p-6 sm:p-8 rounded-2xl border border-purple-400/30 transform transition-all duration-500 scale-95 opacity-0">
+                <div class="text-3xl mb-3">🎓 ✨</div>
+                <h3 id="finalMessageText" class="text-xl sm:text-2xl font-extrabold text-amber-300 mb-2">
+                    See you at 11 am at university tomorrow!
+                </h3>
+                <p class="text-slate-200 text-sm sm:text-base">
+                    Görüşənədək! Gəlişini gözləyirik. 🚀
+                </p>
+            </div>
+
+            <!-- Back Button -->
+            <button onclick="goToPage1()" class="mt-6 inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span>Birinci səhifəyə qayıt</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        let noClicks = 0;
+
+        // Trigger confetti on initial page load
+        window.onload = function() {
+            fireConfetti();
+        };
+
+        function fireConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // Dynamically move the "No" button around when hovered/tapped
+        function moveNoBtn() {
+            const noBtn = document.getElementById('noBtn');
+            const card = document.getElementById('invitationCard');
+            
+            const cardRect = card.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Calculate max available bounds within invitationCard
+            const maxX = cardRect.width - btnRect.width - 20;
+            const maxY = cardRect.height - btnRect.height - 20;
+
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+            noBtn.style.width = 'auto';
+        }
+
+        // Navigation to Page 2
+        function goToPage2() {
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+
+            page1.classList.remove('page-active');
+            page1.classList.add('page-exit');
+
+            setTimeout(() => {
+                page1.classList.add('hidden');
+                page1.classList.remove('page-exit');
+                
+                page2.classList.remove('hidden');
+                setTimeout(() => {
+                    page2.classList.remove('page-enter');
+                    page2.classList.add('page-active');
+                }, 50);
+            }, 300);
+        }
+
+        // Navigation back to Page 1
+        function goToPage1() {
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+
+            page2.classList.remove('page-active');
+            page2.classList.add('page-exit');
+
+            setTimeout(() => {
+                page2.classList.add('hidden');
+                page2.classList.remove('page-exit');
+                
+                page1.classList.remove('hidden');
+                setTimeout(() => {
+                    page1.classList.remove('page-enter');
+                    page1.classList.add('page-active');
+                }, 50);
+            }, 300);
+        }
+
+        // Handle "No" button logic
+        function handleNo() {
+            noClicks++;
+            const noBtn = document.getElementById('noBtn');
+            const clickCountBadge = document.getElementById('clickCount');
+
+            // Add visual click count indicator
+            clickCountBadge.classList.remove('hidden');
+            clickCountBadge.innerText = `${noClicks}/3`;
+
+            // Jump to another position when clicked
+            moveNoBtn();
+
+            if (noClicks >= 3) {
+                revealFinalMessage('see you at 11 am at university tomoorow');
+                fireConfetti();
+            }
+        }
+
+        // Handle "Yes" button logic
+        function handleYes() {
+            revealFinalMessage('see you at 11 am at university tomoorow');
+            fireConfetti();
+        }
+
+        // Display final response card
+        function revealFinalMessage(message) {
+            const buttonGroup = document.getElementById('buttonGroup');
+            const hintText = document.getElementById('hintText');
+            const finalMessage = document.getElementById('finalMessage');
+            const finalMessageText = document.getElementById('finalMessageText');
+
+            // Fade out the buttons smoothly
+            buttonGroup.style.opacity = '0';
+            buttonGroup.style.pointerEvents = 'none';
+            if (hintText) hintText.style.opacity = '0';
+
+            setTimeout(() => {
+                buttonGroup.classList.add('hidden');
+                if (hintText) hintText.classList.add('hidden');
+
+                // Show final message
+                finalMessageText.innerText = message;
+                finalMessage.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    finalMessage.classList.remove('scale-95', 'opacity-0');
+                    finalMessage.classList.add('scale-100', 'opacity-100');
+                }, 50);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
+```
